@@ -1,0 +1,21 @@
+<section class="vistaRegistro">
+  <article class="registro">
+    <h2>Reenviar Confirmacion</h2>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+  <br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Correo Electronico", id:"inputEmail",required:true ,value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit "Reenviar confirmacion de correo", id:"BotonRegistro" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+  </article>
+</section>
